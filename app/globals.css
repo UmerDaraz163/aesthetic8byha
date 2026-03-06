@@ -1,26 +1,38 @@
+/* app/globals.css */
+
 @import "tailwindcss";
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* The Gold from your logo */
+  --color-gold: #c5a059; 
+  /* Deep Medical Navy */
+  --color-navy: #0f172a; 
+  /* Health/Medical Blue for hovers */
+  --color-medical: #1e40af; 
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-white text-slate-900 font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F1D38A 50%, #D4AF37 100%);
+}
+
+.navy-gradient {
+  background: linear-gradient(135deg, #000080 0%, #000040 100%);
 }
