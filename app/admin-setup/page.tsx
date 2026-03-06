@@ -15,27 +15,27 @@ export default function SetupAdmin() {
     setLoading(true);
     setStatus(null);
 
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+    // try {
+    //   const { data, error } = await supabase.auth.signUp({
+    //     email,
+    //     password,
+    //   });
 
-      if (error) throw error;
+    //   if (error) throw error;
 
-      setStatus({
-        type: 'success',
-        message: `Admin user created successfully! You can now log in at /login with ${email}.`
-      });
-    } catch (err) {
-      // Safely handling the error type without using 'any'
-      setStatus({
-        type: 'error',
-        message: err instanceof Error ? err.message : 'Failed to create admin user.'
-      });
-    } finally {
-      setLoading(false);
-    }
+    //   setStatus({
+    //     type: 'success',
+    //     message: `Admin user created successfully! You can now log in at /login with ${email}.`
+    //   });
+    // } catch (err) {
+    //   // Safely handling the error type without using 'any'
+    //   setStatus({
+    //     type: 'error',
+    //     message: err instanceof Error ? err.message : 'Failed to create admin user.'
+    //   });
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   return (
