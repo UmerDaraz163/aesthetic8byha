@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react'; // Removed useEffect
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion'; // Note: typically 'framer-motion' instead of 'motion/react' in Next.js
 import { Send, User, MessageSquare, ChevronDown, Sparkles, CheckCircle2 } from 'lucide-react';
-// import { cn } from '@/lib/utils'; // Uncomment if you end up needing it for dynamic classes later
+// import { cn } from '@/lib/utils'; 
 
 const CLINIC_SERVICES = [
   "Cosmetology",
@@ -19,12 +19,40 @@ const CLINIC_SERVICES = [
 ];
 
 const ACADEMY_SERVICES = [
-  "Botox Training",
-  "PRP Therapy Course",
-  "Microneedling Masterclass",
-  "Dermal Fillers Advanced",
-  "Skin Booster Certification",
-  "Chemical Peel Workshop"
+  // --- Invasive ---
+  "Botox (Anti-Wrinkle Injections)",
+  "Dermal Fillers",
+  "Cog Threads (Face Lifting Threads)",
+  "Profhilo / Skin Boosters",
+  "Exosomes Therapy",
+  "PDRN / Rejuvenation Treatment",
+  "Fat-Dissolving Injections",
+  "Whitening Drips / IV Glow Therapy",
+  "Mole Removal",
+  // --- Non-Invasive ---
+  "Carbon Laser Facial",
+  "Tattoo Removal Laser",
+  "Face PRP Therapy",
+  "Microneedling / Dermapen",
+  "Hair PRP Therapy",
+  "Diamond Dermabrasion",
+  "Chemical Peels",
+  "Skin Analysis",
+  "Skin Rejuvenation Techniques",
+  "Anti-Aging Treatments",
+  "HydraFacial",
+  "Cold/Hot/Pico Laser Treatments",
+  "Radio Frequency (RF Skin Tightening)",
+  // --- Cosmetology ---
+  "Microblading",
+  "Micropigmentation",
+  "BB Glow",
+  "Lip Tinting",
+  "Cheeks Tinting",
+  "Brow Lamination",
+  "Lash Lifting",
+  "Brow Tinting",
+  "Eyelash Extensions"
 ];
 
 type CategoryType = 'Clinic Treatment' | 'Academy Training';
@@ -34,8 +62,6 @@ export default function BookingForm() {
   const [service, setService] = useState('');
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
-
-  // ❌ We deleted the useEffect that was causing the cascading render warning!
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,7 +131,6 @@ Message: ${message || 'No additional message'}`;
               <select
                 value={category}
                 onChange={(e) => {
-                  // ✅ FIX: Update both states synchronously right here!
                   setCategory(e.target.value as CategoryType);
                   setService(''); 
                 }}

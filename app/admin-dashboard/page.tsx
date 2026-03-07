@@ -11,7 +11,8 @@ import {
   LogOut, 
   Loader2, 
   XCircle,
-  Award
+  Award,
+  ChevronDown
 } from 'lucide-react';
 
 // GSAP Import
@@ -332,14 +333,24 @@ export default function AdminDashboard() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Duration</label>
-                    <input 
-                      required
-                      type="text"
-                      value={formData.course_duration}
-                      onChange={(e) => setFormData({...formData, course_duration: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none text-navy"
-                      placeholder="e.g. 2 Days Intensive"
-                    />
+                    <div className="relative">
+                      <select 
+                        required
+                        value={formData.course_duration}
+                        onChange={(e) => setFormData({...formData, course_duration: e.target.value})}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-gold/50 focus:border-gold outline-none text-navy appearance-none"
+                      >
+                        <option value="" disabled>Select duration...</option>
+                        <option value="1 Week">1 Week</option>
+                        <option value="2 Weeks">2 Weeks</option>
+                        <option value="1 Month">1 Month</option>
+                        <option value="2 Months">2 Months</option>
+                        <option value="3 Months">3 Months</option>
+                        <option value="6 Months">6 Months</option>
+                        <option value="1 Year">1 Year</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5 pointer-events-none"/>
+                    </div>
                   </div>
                   <div className="space-y-2 md:col-span-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Completion Date</label>

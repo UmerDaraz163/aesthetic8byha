@@ -11,7 +11,8 @@ import {
   Globe, 
   UserCheck,
   Star,
-  Users
+  Users,
+  Sparkles
 } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
 import Image from "next/image";
@@ -22,82 +23,65 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const courseData: Record<string, { desc: string }> = {
   // --- INVASIVE TREATMENTS ---
-  "Botox (Anti-Wrinkle Injections)": {
-    desc: "Master upper and lower face neurotoxin application, including precise dilution protocols and complication management."
-  },
-  "Dermal Fillers": {
-    desc: "Comprehensive training on hyaluronic acid properties, facial anatomy, and advanced volumization using needle and cannula techniques."
-  },
-  "Cog Threads (Face Lifting Threads)": {
-    desc: "Advanced structural lifting module covering vector planning and tissue repositioning with high-tensile PDO cogs."
-  },
-  "Profhilo / Skin Boosters": {
-    desc: "Learn bio-remodeling and deep hydration protocols focusing on the BAP technique for skin laxity."
-  },
-  "Exosomes Therapy": {
-    desc: "Study the latest in regenerative aesthetics, focusing on cell-signaling therapy for advanced skin and hair restoration."
-  },
-  "PDRN / Rejuvenation Treatment": {
-    desc: "Training in Polydeoxyribonucleotide (Salmon DNA) protocols for cellular-level clinical skin repair."
-  },
-  "Fat-Dissolving Injections": {
-    desc: "Clinical lipolytic treatment protocols for submental and targeted body contouring using safe dissolving agents."
-  },
-  "Whitening Drips / IV Glow Therapy": {
-    desc: "Master safe IV administration and nutrient mixing for evidence-based systemic skin brightening."
-  },
-  "Mole Removal": {
-    desc: "Specialized module for clinical lesion assessment and professional removal using advanced cautery methods."
-  },
+  "Botox (Anti-Wrinkle Injections)": { desc: "Master upper and lower face neurotoxin application, including precise dilution protocols and complication management." },
+  "Dermal Fillers": { desc: "Comprehensive training on hyaluronic acid properties, facial anatomy, and advanced volumization using needle and cannula techniques." },
+  "Cog Threads (Face Lifting Threads)": { desc: "Advanced structural lifting module covering vector planning and tissue repositioning with high-tensile PDO cogs." },
+  "Profhilo / Skin Boosters": { desc: "Learn bio-remodeling and deep hydration protocols focusing on the BAP technique for skin laxity." },
+  "Exosomes Therapy": { desc: "Study the latest in regenerative aesthetics, focusing on cell-signaling therapy for advanced skin and hair restoration." },
+  "PDRN / Rejuvenation Treatment": { desc: "Training in Polydeoxyribonucleotide (Salmon DNA) protocols for cellular-level clinical skin repair." },
+  "Fat-Dissolving Injections": { desc: "Clinical lipolytic treatment protocols for submental and targeted body contouring using safe dissolving agents." },
+  "Whitening Drips / IV Glow Therapy": { desc: "Master safe IV administration and nutrient mixing for evidence-based systemic skin brightening." },
+  "Mole Removal": { desc: "Specialized module for clinical lesion assessment and professional removal using advanced cautery methods." },
 
   // --- NON-INVASIVE TREATMENTS ---
-  "Carbon Laser Facial": {
-    desc: "Professional training in the 'Hollywood Peel' using Q-Switched lasers for deep cleansing and oil control."
-  },
-  "Tattoo Removal Laser": {
-    desc: "Study laser-skin interactions and specific wavelengths for safe, scar-free multi-colored pigment removal."
-  },
-  "Face PRP Therapy": {
-    desc: "Master platelet concentration protocols and professional delivery for skin rejuvenation and facial glow."
-  },
-  "Microneedling / Dermapen": {
-    desc: "Collagen Induction Therapy mastery, covering depth control and the application of clinical meso-cocktails."
-  },
-  "Hair PRP Therapy": {
-    desc: "Anatomical focus on scalp treatments and injection patterns for hair thinning and androgenetic alopecia."
-  },
-  "Diamond Dermabrasion": {
-    desc: "Master mechanical exfoliation protocols to effectively treat skin texture and superficial acne scarring."
-  },
-  "Chemical Peels": {
-    desc: "In-depth study of pH levels and acid types (AHA/BHA/TCA) for customized clinical resurfacing."
-  },
-  "Skin Analysis": {
-    desc: "Professional consultation training using digital analysis to create bespoke clinical treatment plans."
-  },
-  "Skin Rejuvenation Techniques": {
-    desc: "A holistic overview of multi-modality clinical approaches to treat photodamage and early signs of aging."
-  },
-  "Anti-Aging Treatments": {
-    desc: "Advanced study of the physiological aging process and combined evidence-based clinical protocols."
-  },
-  "HydraFacial": {
-    desc: "Comprehensive mastery of vortex technology for deep extraction, exfoliation, and antioxidant hydration."
-  },
-  "Cold/Hot/Pico Laser Treatments": {
-    desc: "Specialized training in laser physics and safety for treating hyperpigmentation and skin resurfacing."
-  },
-  "Radio Frequency (RF Skin Tightening)": {
-    desc: "Master non-surgical tightening using controlled thermal energy to stimulate long-term elastin production."
-  }
+  "Carbon Laser Facial": { desc: "Professional training in the 'Hollywood Peel' using Q-Switched lasers for deep cleansing and oil control." },
+  "Tattoo Removal Laser": { desc: "Study laser-skin interactions and specific wavelengths for safe, scar-free multi-colored pigment removal." },
+  "Face PRP Therapy": { desc: "Master platelet concentration protocols and professional delivery for skin rejuvenation and facial glow." },
+  "Microneedling / Dermapen": { desc: "Collagen Induction Therapy mastery, covering depth control and the application of clinical meso-cocktails." },
+  "Hair PRP Therapy": { desc: "Anatomical focus on scalp treatments and injection patterns for hair thinning and androgenetic alopecia." },
+  "Diamond Dermabrasion": { desc: "Master mechanical exfoliation protocols to effectively treat skin texture and superficial acne scarring." },
+  "Chemical Peels": { desc: "In-depth study of pH levels and acid types (AHA/BHA/TCA) for customized clinical resurfacing." },
+  "Skin Analysis": { desc: "Professional consultation training using digital analysis to create bespoke clinical treatment plans." },
+  "Skin Rejuvenation Techniques": { desc: "A holistic overview of multi-modality clinical approaches to treat photodamage and early signs of aging." },
+  "Anti-Aging Treatments": { desc: "Advanced study of the physiological aging process and combined evidence-based clinical protocols." },
+  "HydraFacial": { desc: "Comprehensive mastery of vortex technology for deep extraction, exfoliation, and antioxidant hydration." },
+  "Cold/Hot/Pico Laser Treatments": { desc: "Specialized training in laser physics and safety for treating hyperpigmentation and skin resurfacing." },
+  "Radio Frequency (RF Skin Tightening)": { desc: "Master non-surgical tightening using controlled thermal energy to stimulate long-term elastin production." },
+
+  // --- COSMETOLOGY TREATMENTS ---
+  "Microblading": { desc: "Master the art of semi-permanent eyebrow tattooing using fine, hair-like strokes for natural-looking enhancement." },
+  "Micropigmentation": { desc: "Advanced training in cosmetic tattooing for eyeliner, brows, and scalp using digital machine techniques." },
+  "BB Glow": { desc: "Learn micro-needling techniques infused with skin-toned serums for a semi-permanent foundation effect." },
+  "Lip Tinting": { desc: "Specialized protocols for semi-permanent lip blushing to enhance color, symmetry, and definition." },
+  "Cheeks Tinting": { desc: "Techniques for applying semi-permanent blush to create a natural, long-lasting rosy glow." },
+  "Brow Lamination": { desc: "Master the chemical process of restructuring brow hairs to keep them in a desired shape and style." },
+  "Lash Lifting": { desc: "Clinical techniques to curl and elevate natural eyelashes from the root for a longer, thicker appearance." },
+  "Brow Tinting": { desc: "Professional color matching and application for semi-permanent enhancement of eyebrow depth and tone." },
+  "Eyelash Extensions": { desc: "Comprehensive training on isolation and application of individual synthetic lashes to natural lashes." }
 };
 
-export default function Academy() {
-  const [activeTab, setActiveTab] = useState<"invasive" | "non-invasive">("invasive");
-  const containerRef = useRef<HTMLDivElement>(null);
+// Explicit category arrays to prevent duplication and make rendering cleaner
+const invasiveCourses = [
+  "Botox (Anti-Wrinkle Injections)", "Dermal Fillers", "Cog Threads (Face Lifting Threads)", 
+  "Profhilo / Skin Boosters", "Exosomes Therapy", "PDRN / Rejuvenation Treatment", 
+  "Fat-Dissolving Injections", "Whitening Drips / IV Glow Therapy", "Mole Removal"
+];
 
-  const invasiveCourses = Object.keys(courseData).slice(0, 9);
-  const nonInvasiveCourses = Object.keys(courseData).slice(9);
+const nonInvasiveCourses = [
+  "Carbon Laser Facial", "Tattoo Removal Laser", "Face PRP Therapy", "Microneedling / Dermapen", 
+  "Hair PRP Therapy", "Diamond Dermabrasion", "Chemical Peels", "Skin Analysis", 
+  "Skin Rejuvenation Techniques", "Anti-Aging Treatments", "HydraFacial", 
+  "Cold/Hot/Pico Laser Treatments", "Radio Frequency (RF Skin Tightening)"
+];
+
+const cosmetologyCourses = [
+  "Microblading", "Micropigmentation", "BB Glow", "Lip Tinting", "Cheeks Tinting", 
+  "Brow Lamination", "Lash Lifting", "Brow Tinting", "Eyelash Extensions"
+];
+
+export default function Academy() {
+  const [activeTab, setActiveTab] = useState<"invasive" | "non-invasive" | "cosmetology">("invasive");
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Smooth scroll function to jump to the booking form
   const scrollToBooking = () => {
@@ -111,9 +95,7 @@ export default function Academy() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     
-    // We use gsap.context for easy cleanup in React
     const ctx = gsap.context(() => {
-      // Animate the "About Us" section elements
       gsap.from(".gsap-fade-up", {
         y: 50,
         opacity: 0,
@@ -122,11 +104,10 @@ export default function Academy() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".gsap-fade-up",
-          start: "top 85%", // Triggers when the top of the element hits 85% of the viewport height
+          start: "top 85%", 
         }
       });
 
-      // Animate the "Why Join Us" and "Perfect For" cards
       gsap.from(".gsap-card-slide", {
         y: 60,
         opacity: 0,
@@ -140,8 +121,14 @@ export default function Academy() {
       });
     }, containerRef);
 
-    return () => ctx.revert(); // Cleanup on unmount
+    return () => ctx.revert(); 
   }, []);
+
+  // Determine which array to render based on the active tab
+  const currentCourses = 
+    activeTab === "invasive" ? invasiveCourses : 
+    activeTab === "non-invasive" ? nonInvasiveCourses : 
+    cosmetologyCourses;
 
   return (
     <div ref={containerRef} className="pt-32 pb-24 min-h-screen bg-white overflow-hidden">
@@ -201,15 +188,15 @@ export default function Academy() {
         </div>
 
         {/* --- COURSE NAVIGATION --- */}
-        <div className="gsap-fade-up text-center max-w-3xl mx-auto mb-16">
+        <div className="gsap-fade-up text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-serif text-[#0f172a] mb-8">
             Our Training <span className="text-[#c5a059] italic">Modules</span>
           </h2>
-          <div className="bg-slate-100 p-1.5 rounded-2xl inline-flex shadow-inner">
+          <div className="bg-slate-100 p-1.5 rounded-2xl inline-flex flex-wrap justify-center shadow-inner gap-1 sm:gap-0">
             <button
               onClick={() => setActiveTab("invasive")}
               className={cn(
-                "px-10 py-3.5 rounded-xl text-sm font-black transition-all flex items-center gap-2",
+                "px-8 py-3.5 rounded-xl text-sm font-black transition-all flex items-center gap-2",
                 activeTab === "invasive" ? "bg-[#0f172a] text-white shadow-lg" : "text-slate-500 hover:text-[#0f172a]"
               )}
             >
@@ -218,11 +205,20 @@ export default function Academy() {
             <button
               onClick={() => setActiveTab("non-invasive")}
               className={cn(
-                "px-10 py-3.5 rounded-xl text-sm font-black transition-all flex items-center gap-2",
+                "px-8 py-3.5 rounded-xl text-sm font-black transition-all flex items-center gap-2",
                 activeTab === "non-invasive" ? "bg-[#0f172a] text-white shadow-lg" : "text-slate-500 hover:text-[#0f172a]"
               )}
             >
               <Zap className="w-4 h-4" /> NON-INVASIVE
+            </button>
+            <button
+              onClick={() => setActiveTab("cosmetology")}
+              className={cn(
+                "px-8 py-3.5 rounded-xl text-sm font-black transition-all flex items-center gap-2",
+                activeTab === "cosmetology" ? "bg-[#0f172a] text-white shadow-lg" : "text-slate-500 hover:text-[#0f172a]"
+              )}
+            >
+              <Sparkles className="w-4 h-4" /> COSMETOLOGY
             </button>
           </div>
         </div>
@@ -236,7 +232,7 @@ export default function Academy() {
             exit={{ opacity: 0, y: -20 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {(activeTab === "invasive" ? invasiveCourses : nonInvasiveCourses).map((course, i) => {
+            {currentCourses.map((course, i) => {
               const data = courseData[course];
               return (
                 <motion.div
