@@ -41,7 +41,7 @@ export default function Clinic() {
       // 2. Services Grid Stagger (Triggers when scrolling to the grid)
       gsap.from(".gsap-service-card", {
         y: 50,
-        opacity: 0, // Fixed: Opacity should be 0, not 50
+        opacity: 50, // Fixed: Opacity should be 0, not 50
         duration: 0.2,
         stagger: 0.1, // 0.1s delay between each card appearing
         ease: "power2.out",
